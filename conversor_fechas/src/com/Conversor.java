@@ -23,28 +23,31 @@ public class Conversor {
 	
 	//Almacen temporal
 	String[] datos;
-			
+
+	
 	//Lineas leidas
 	int contador;
 	
-	String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
-			          "Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
-	
 	String[] dias = {"Primero","Dos","Tres","Cuatro","Cinco","Seis","Siete","Ocho",
-		    "Nueve","Diez","Once","Doce","Trece","Catorce","Quince","Dieciseis","Diecisiete",
-		    "Dieciocho","Diecinueve","Veinte","Veintiuno","Veintidos","Veintitres","Veinticuatro","Veinticinco","Veintiseis",
-		    "Veintisiete","Veintiocho","Veintinueve","Treinta","Treinta y uno"};
+		              "Nueve","Diez","Once","Doce","Trece","Catorce","Quince","Dieciseis",
+		              "Diecisiete","Dieciocho","Diecinueve","Veinte","Veintiuno","Veintidos",
+		              "Veintitres","Veinticuatro","Veinticinco","Veintiseis","Veintisiete",
+		              "Veintiocho","Veintinueve","Treinta","Treinta y uno"};
 	
-	//Método constructor vacío
+	String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto",
+			          "Septiembre","Octubre","Noviembre","Diciembre"};
+	//Constructor vacio
 	public Conversor() {
 		
 	}
-
+	
+	/*click derecho source constructor using fields
+	constructor con argumentos 	*/
 	public Conversor(String original, String linea, String cifrado) {
+		super();
 		this.original = original;
 		this.linea = linea;
 		this.cifrado = cifrado;
-		
 	}
 
 	public String getOriginal() {
@@ -69,14 +72,12 @@ public class Conversor {
 
 	public void setCifrado(String cifrado) {
 		this.cifrado = cifrado;
-	}
+  }
 
 	@Override
 	public String toString() {
 		return "Conversor [original=" + original + ", linea=" + linea + ", cifrado=" + cifrado + "]";
 	}
-	
-	
 	//-----COMPORTAMIENTO------
 	/*
 	 * 1: Métodos nativos
@@ -108,7 +109,7 @@ public class Conversor {
 	public void leerArchivo(String ruta) {
 		File file = new File(ruta);
 		int indice = 0;
-		//Inicializa el array ya con el tamaño calculando en el metodo anterior
+
 		datos = new String[contarLineas(ruta)];
 		try {
 			FileReader fr = new FileReader(file);
@@ -140,12 +141,9 @@ public class Conversor {
 			
 			convertido = dias[dia-1] +" de "+ meses[mes-1] + 
 					lineaActual.substring(5, lineaActual.length());
-			
 			System.out.println(convertido);
-			
 			//Reasigno las fechas pero ya convertidas
 			datos[i] = convertido;
-		
 		}
 	}
 	public void escribirFechas(String ruta) {
@@ -161,6 +159,5 @@ public class Conversor {
 		}catch(Exception ex) {
 			
 	  }
-		
 	}
 }
